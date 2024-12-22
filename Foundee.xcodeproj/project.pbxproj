@@ -14,7 +14,7 @@
 		7A2570962D13A1AE00BE7937 /* Exceptions for "Foundee" folder in "Foundee" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Resources/Info.plist,
+				Info.plist,
 			);
 			target = 7A2570832D13A1AD00BE7937 /* Foundee */;
 		};
