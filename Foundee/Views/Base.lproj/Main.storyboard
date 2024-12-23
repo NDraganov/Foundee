@@ -160,8 +160,19 @@
                     <navigationItem key="navigationItem" title="New Item" id="sMU-HZ-bC3">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Nrl-9J-l74">
                             <color key="tintColor" systemColor="systemPinkColor"/>
+                            <connections>
+                                <action selector="addItemPressed:" destination="vix-IZ-cUV" id="8LD-eE-q9O"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateAndTime" destination="6UC-Hv-S93" id="Nmw-qf-6jd"/>
+                        <outlet property="founderEmailTxt" destination="uqa-o3-tSx" id="Fkl-ow-JTJ"/>
+                        <outlet property="founderNameTxt" destination="NZp-GJ-cFU" id="d7G-AB-C2u"/>
+                        <outlet property="itemDescriptionTxt" destination="MpW-f6-8ZA" id="Il0-VS-cMh"/>
+                        <outlet property="notesItemTxt" destination="q1s-lO-cW7" id="fkX-s9-myN"/>
+                        <outlet property="phoneNumberTxt" destination="3SZ-g5-zPH" id="pxc-P1-vJV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="925-oe-Ndh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
