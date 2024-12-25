@@ -10,13 +10,18 @@ import RealmSwift
 
 class LostTableViewController: UITableViewController {
     
-    var lostItems: Results<Item>?
-    let realm = try! Realm()
+//    @IBOutlet weak var table: UITableView!
+    
+    private var lostItems: Results<Item>?
+    private let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadLostItems()
+        
+        tableView.register(LostItemTableViewCell.nib(), forCellReuseIdentifier: LostItemTableViewCell.identifier)
+        
+        
     }
     
 //MARK: - TableView Datasource Methods
@@ -26,16 +31,25 @@ class LostTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LostCell", for: indexPath)
+        let customCell = tableView.dequeueReusableCell(withIdentifier: LostItemTableViewCell.identifier, for: indexPath) as! LostItemTableViewCell
         
         if let lostItem = lostItems?[indexPath.row] {
-            cell.textLabel?.text = lostItem.item
+            customCell.lostItemLabel?.text = lostItem.item
+            customCell.lostItemNameLabel?.text = lostItem.name
+            customCell.lostItemNoteLabel?.text = lostItem.note
         } else {
-            cell.textLabel?.text = "No Lost Items"
+            customCell.lostItemLabel?.text = "No Lost Items"
         }
         
-        return cell
+        return customCell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+//    override func tableView(_tableView: UITableView, heightForRowAtindexPath: IndexPath) -> CGFloat {
+//      return 70
+//    }
     
 //MARK: - Model Manupulations Methods
     

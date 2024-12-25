@@ -17,7 +17,7 @@ class NewItemViewController: UIViewController {
     @IBOutlet weak var phoneNumberTxt: UITextField!
     @IBOutlet weak var founderEmailTxt: UITextField!
     
-    let realm = try! Realm()
+    private let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
