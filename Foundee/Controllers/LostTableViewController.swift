@@ -10,18 +10,20 @@ import RealmSwift
 
 class LostTableViewController: UITableViewController {
     
-//    @IBOutlet weak var table: UITableView!
-    
     private var lostItems: Results<Item>?
     private let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadLostItems()
         
+        // Register the custom table view cell
         tableView.register(LostItemTableViewCell.nib(), forCellReuseIdentifier: LostItemTableViewCell.identifier)
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
 //MARK: - TableView Datasource Methods
@@ -47,14 +49,12 @@ class LostTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-//    override func tableView(_tableView: UITableView, heightForRowAtindexPath: IndexPath) -> CGFloat {
-//      return 70
-//    }
+    
     
 //MARK: - Model Manupulations Methods
     
     func loadLostItems() {
-        lostItems = realm.objects(Item.self).sorted(by: \Item.date)
+        lostItems = realm.objects(Item.self).sorted(by: \Item.date, ascending: false)
         tableView.reloadData()
     }
 

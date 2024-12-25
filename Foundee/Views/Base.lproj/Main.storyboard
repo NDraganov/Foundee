@@ -158,6 +158,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="sMU-HZ-bC3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Lec-rI-KRG">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="cancelNewItemPressed:" destination="vix-IZ-cUV" id="gMt-4n-8l4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Nrl-9J-l74">
                             <color key="tintColor" systemColor="systemPinkColor"/>
                             <connections>
@@ -323,6 +329,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

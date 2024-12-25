@@ -38,10 +38,14 @@ class NewItemViewController: UIViewController {
             try realm.write {
                 realm.add(newItem)
             }
+            navigationController?.popViewController(animated: true)  // Redirect to the Lost Table View
         } catch {
             print("Error adding item: \(error)")
         }
         
     }
     
+    @IBAction func cancelNewItemPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
