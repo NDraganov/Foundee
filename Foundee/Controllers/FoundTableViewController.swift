@@ -22,6 +22,10 @@ class FoundTableViewController: UITableViewController {
         tableView.register(LostItemTableViewCell.nib(), forCellReuseIdentifier: LostItemTableViewCell.identifier)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
 //MARK: - TableView Datasource Methods
         
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

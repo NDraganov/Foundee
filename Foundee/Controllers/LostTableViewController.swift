@@ -26,6 +26,14 @@ class LostTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+//MARK: - TableView Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        vc.item = lostItems?[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
