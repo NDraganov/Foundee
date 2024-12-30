@@ -10,6 +10,7 @@ import RealmSwift
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var itemNote: UILabel!
     @IBOutlet weak var date: UILabel!
@@ -30,6 +31,7 @@ class DetailsViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "en_US")
         let formattedDate = dateFormatter.string(from: item!.date)
 
+        itemImage.image = UIImage(data: item!.image as Data)
         itemTitle.text = item?.item
         itemNote.text = item?.note
         date.text = formattedDate

@@ -15,6 +15,7 @@ class Item: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var phone: String = ""
     @objc dynamic var email: String = ""
+    @objc dynamic var image: NSData = NSData()
     @objc dynamic var isReturned: Bool = false
     
 }

@@ -18,10 +18,19 @@ class NewItemViewController: UIViewController {
     @IBOutlet weak var founderEmailTxt: UITextField!
     
     private let realm = try! Realm()
+    private let picker = UIImagePickerController()
+    private var pickedImage: NSData = NSData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    @IBAction func uploadImagePressed(_ sender: UIButton) {
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     @IBAction func addItemPressed(_ sender: UIBarButtonItem) {
@@ -33,6 +42,7 @@ class NewItemViewController: UIViewController {
         newItem.name = founderNameTxt.text!
         newItem.phone = phoneNumberTxt.text!
         newItem.email = founderEmailTxt.text!
+        newItem.image = pickedImage
         
         do {
             try realm.write {
@@ -47,5 +57,22 @@ class NewItemViewController: UIViewController {
     
     @IBAction func cancelNewItemPressed(_ sender: UIBarButtonItem) {
         navigationController?.popToRootViewController(animated: true)
+    }
+}
+
+extension NewItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            let imageData = NSData(data: image.pngData()!)
+            pickedImage = imageData
+        }
+        
+        picker.dismiss(animated: true , completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true , completion: nil)
     }
 }
