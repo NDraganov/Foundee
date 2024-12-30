@@ -39,6 +39,7 @@ class FoundTableViewController: UITableViewController {
                 customCell.lostItemLabel?.text = foundItem.item
                 customCell.lostItemNameLabel?.text = foundItem.name
                 customCell.lostItemNoteLabel?.text = foundItem.note
+                customCell.lostItemImageView?.image = UIImage(data: foundItem.image as Data)
             } else {
                 customCell.lostItemLabel?.text = "No Found Items"
             }

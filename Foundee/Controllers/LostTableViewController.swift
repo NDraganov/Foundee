@@ -63,7 +63,8 @@ class LostTableViewController: UITableViewController {
 //MARK: - Model Manupulations Methods
     
     func loadLostItems() {
-        lostItems = realm.objects(Item.self).sorted(by: \Item.date, ascending: false)
+        let predicate = NSPredicate(format: "isReturned == false")
+        lostItems = realm.objects(Item.self).sorted(by: \Item.date, ascending: false).filter(predicate)
         tableView.reloadData()
     }
 
