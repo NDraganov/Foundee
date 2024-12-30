@@ -15,16 +15,18 @@ class LostItemTableViewCell: UITableViewCell {
       return UINib(nibName: "LostItemTableViewCell", bundle: nil)
     }
 
-    public func configure(with title: String, itemNote: String, itemName: String) {
+    public func configure(with title: String, itemNote: String, itemName: String, itemImage: UIImage) {
         lostItemLabel.text = title  // The name of the item
         lostItemNoteLabel.text = itemNote  // Item description
         lostItemNameLabel.text = itemName  // The name of the founder
+        lostItemImageView.image = itemImage // The item image
+        
     }
-
     
     @IBOutlet var lostItemLabel: UILabel!
     @IBOutlet var lostItemNoteLabel: UILabel!
     @IBOutlet var lostItemNameLabel: UILabel!
+    @IBOutlet var lostItemImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

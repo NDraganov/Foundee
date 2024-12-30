@@ -47,6 +47,7 @@ class LostTableViewController: UITableViewController {
             customCell.lostItemLabel?.text = lostItem.item
             customCell.lostItemNameLabel?.text = lostItem.name
             customCell.lostItemNoteLabel?.text = lostItem.note
+            customCell.lostItemImageView?.image = UIImage(data: lostItem.image as Data)
         } else {
             customCell.lostItemLabel?.text = "No Lost Items"
         }
