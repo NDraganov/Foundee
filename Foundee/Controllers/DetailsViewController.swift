@@ -38,17 +38,34 @@ class DetailsViewController: UIViewController {
         founderName.text = item?.name
         founderPhone.text = item?.phone
         founderEmail.text = item?.email
+        
+        if item?.isReturned == true {
+            returnSwitch.isOn = true
+        }
     }
 
     @IBAction func returnSwitchPressed(_ sender: UISwitch) {
-        if sender.isOn {
-            do {
-                try realm.write {
-                    item?.isReturned = true
+       
+        let alert = UIAlertController(title: "Confirmation", message: "Confirm that this item has been returned", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            sender.isOn = false
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+            if sender.isOn == true {
+                do {
+                    try self.realm.write {
+                        self.item?.isReturned = true
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                } catch {
+                    print("Error changing the return state \(error)")
                 }
-            } catch {
-                print("Error changing the return state \(error)")
             }
-        }
+            
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
