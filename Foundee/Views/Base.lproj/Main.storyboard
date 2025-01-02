@@ -466,7 +466,7 @@
                             <outlet property="delegate" destination="oEn-yD-gQK" id="j2X-p6-gik"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Found" id="gJU-3B-4P9"/>
+                    <navigationItem key="navigationItem" title="Found" id="v9y-Ph-Z5h"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7u-bh-VSI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -480,6 +480,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nAv-eQ-r1c">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemGreenColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="25"/>
                             <color key="textColor" systemColor="systemGreenColor"/>

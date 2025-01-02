@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Item: Object {
+class LostItem: Object {
     @objc dynamic var date: Date = Date()
     @objc dynamic var item: String = ""
     @objc dynamic var note: String = ""

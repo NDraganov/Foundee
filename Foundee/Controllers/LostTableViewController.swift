@@ -10,7 +10,7 @@ import RealmSwift
 
 class LostTableViewController: UITableViewController {
     
-    private var lostItems: Results<Item>?
+    private var lostItems: Results<LostItem>?
     private let realm = try! Realm()
 
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class LostTableViewController: UITableViewController {
     
     func loadLostItems() {
         let predicate = NSPredicate(format: "isReturned == false")
-        lostItems = realm.objects(Item.self).sorted(by: \Item.date, ascending: false).filter(predicate)
+        lostItems = realm.objects(LostItem.self).sorted(by: \LostItem.date, ascending: false).filter(predicate)
         tableView.reloadData()
     }
 
