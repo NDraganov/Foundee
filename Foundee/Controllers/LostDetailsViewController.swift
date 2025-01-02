@@ -8,19 +8,19 @@
 import UIKit
 import RealmSwift
 
-class DetailsViewController: UIViewController {
+class LostDetailsViewController: UIViewController {
 
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var itemNote: UILabel!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var founderName: UILabel!
-    @IBOutlet weak var founderPhone: UILabel!
-    @IBOutlet weak var founderEmail: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var email: UILabel!
     @IBOutlet weak var returnSwitch: UISwitch!
     
     let realm = try! Realm()
-    var item: Item?
+    var item: LostItem?
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -35,9 +35,9 @@ class DetailsViewController: UIViewController {
         itemTitle.text = item?.item
         itemNote.text = item?.note
         date.text = formattedDate
-        founderName.text = item?.name
-        founderPhone.text = item?.phone
-        founderEmail.text = item?.email
+        name.text = item?.name
+        phone.text = item?.phone
+        email.text = item?.email
         
         if item?.isReturned == true {
             returnSwitch.isOn = true

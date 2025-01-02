@@ -199,10 +199,10 @@
             </objects>
             <point key="canvasLocation" x="-2553.4351145038167" y="1581.6901408450706"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Lost Details View Controller-->
         <scene sceneID="BKX-2h-kcJ">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="gXZ-1f-6vb" customClass="DetailsViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="gXZ-1f-6vb" customClass="LostDetailsViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3I2-hb-8Dy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

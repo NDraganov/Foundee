@@ -18,9 +18,8 @@ class LostItemTableViewCell: UITableViewCell {
     public func configure(with title: String, itemNote: String, itemName: String, itemImage: UIImage) {
         lostItemLabel.text = title  // The name of the item
         lostItemNoteLabel.text = itemNote  // Item description
-        lostItemNameLabel.text = itemName  // The name of the founder
+        lostItemNameLabel.text = itemName  // The name of the owner of the lost item
         lostItemImageView.image = itemImage // The item image
-        
     }
     
     @IBOutlet var lostItemLabel: UILabel!
@@ -30,13 +29,10 @@ class LostItemTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

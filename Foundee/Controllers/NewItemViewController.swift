@@ -13,9 +13,9 @@ class NewItemViewController: UIViewController {
     @IBOutlet weak var dateAndTime: UIDatePicker!
     @IBOutlet weak var itemDescriptionTxt: UITextField!
     @IBOutlet weak var notesItemTxt: UITextField!
-    @IBOutlet weak var founderNameTxt: UITextField!
+    @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var phoneNumberTxt: UITextField!
-    @IBOutlet weak var founderEmailTxt: UITextField!
+    @IBOutlet weak var emailTxt: UITextField!
     
     private let realm = try! Realm()
     private let picker = UIImagePickerController()
@@ -35,13 +35,13 @@ class NewItemViewController: UIViewController {
     
     @IBAction func addItemPressed(_ sender: UIBarButtonItem) {
        
-        let newItem = Item()
+        let newItem = LostItem()
         newItem.date = dateAndTime.date
         newItem.item = itemDescriptionTxt.text!
         newItem.note = notesItemTxt.text!
-        newItem.name = founderNameTxt.text!
+        newItem.name = nameTxt.text!
         newItem.phone = phoneNumberTxt.text!
-        newItem.email = founderEmailTxt.text!
+        newItem.email = emailTxt.text!
         newItem.image = pickedImage
         
         do {
