@@ -8,10 +8,10 @@
 import UIKit
 import RealmSwift
 
-class FoundTableViewController: UITableViewController {
+class FoundViewController: UITableViewController {
     
     private let realm = try! Realm()
-    private var foundItems: Results<Item>!
+    private var foundItems: Results<FoundItem>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,11 @@ class FoundTableViewController: UITableViewController {
     
 //MARK: - TableView Delegate Methods
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        vc.item = foundItems?[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "LostDetailsViewController") as! LostDetailsViewController
+//        vc.item = foundItems?[indexPath.row]
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
 //MARK: - TableView Datasource Methods
         
@@ -44,8 +44,8 @@ class FoundTableViewController: UITableViewController {
             let customCell = tableView.dequeueReusableCell(withIdentifier: LostItemTableViewCell.identifier, for: indexPath) as! LostItemTableViewCell
             
             if let foundItem = foundItems?[indexPath.row] {
-                customCell.lostItemLabel?.text = foundItem.item
-                customCell.lostItemNameLabel?.text = foundItem.name
+                customCell.lostItemLabel?.text = foundItem.note
+                customCell.lostItemNameLabel?.text = foundItem.foundBy
                 customCell.lostItemNoteLabel?.text = foundItem.note
                 customCell.lostItemImageView?.image = UIImage(data: foundItem.image as Data)
             } else {
@@ -63,7 +63,7 @@ class FoundTableViewController: UITableViewController {
     
     func loadFoundItems() {
         let predicate = NSPredicate(format: "isReturned == true")
-        foundItems = realm.objects(Item.self).filter(predicate)
+        foundItems = realm.objects(FoundItem.self).filter(predicate)
         tableView.reloadData()
     }
 

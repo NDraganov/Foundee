@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
         <!--New Item-->
         <scene sceneID="wFx-10-0Ou">
             <objects>
-                <viewController id="vix-IZ-cUV" customClass="NewItemViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vix-IZ-cUV" customClass="NewLostItemViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KSS-tT-P1m">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,9 +189,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateAndTime" destination="6UC-Hv-S93" id="Nmw-qf-6jd"/>
-                        <outlet property="founderEmailTxt" destination="uqa-o3-tSx" id="Fkl-ow-JTJ"/>
-                        <outlet property="founderNameTxt" destination="NZp-GJ-cFU" id="d7G-AB-C2u"/>
+                        <outlet property="emailTxt" destination="uqa-o3-tSx" id="iIe-KM-Ddv"/>
                         <outlet property="itemDescriptionTxt" destination="MpW-f6-8ZA" id="Il0-VS-cMh"/>
+                        <outlet property="nameTxt" destination="NZp-GJ-cFU" id="30Q-a7-5nI"/>
                         <outlet property="notesItemTxt" destination="q1s-lO-cW7" id="fkX-s9-myN"/>
                         <outlet property="phoneNumberTxt" destination="3SZ-g5-zPH" id="pxc-P1-vJV"/>
                     </connections>
@@ -199,10 +200,26 @@
             </objects>
             <point key="canvasLocation" x="-2553.4351145038167" y="1581.6901408450706"/>
         </scene>
+        <!--New Found Item View Controller-->
+        <scene sceneID="FzI-jR-4Fs">
+            <objects>
+                <viewController id="hG1-QC-rOj" customClass="NewFoundItemViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XT7-fe-gCG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ZXk-sd-cOC"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HTl-Br-Yq6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCM-KJ-mTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1822" y="1582"/>
+        </scene>
         <!--Lost Details View Controller-->
         <scene sceneID="BKX-2h-kcJ">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="gXZ-1f-6vb" customClass="LostDetailsViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LostDetailsViewController" id="gXZ-1f-6vb" customClass="LostDetailsViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3I2-hb-8Dy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,18 +373,18 @@
                     </view>
                     <connections>
                         <outlet property="date" destination="hTn-17-PKx" id="t0E-wO-bEf"/>
-                        <outlet property="founderEmail" destination="Jol-gA-eeK" id="AkF-5Y-VuK"/>
-                        <outlet property="founderName" destination="wYm-Gs-VGZ" id="HbV-vh-hMW"/>
-                        <outlet property="founderPhone" destination="R3Q-st-CIP" id="o6w-wp-1cb"/>
+                        <outlet property="email" destination="Jol-gA-eeK" id="Cci-5S-XJ4"/>
                         <outlet property="itemImage" destination="Fv2-FF-FZi" id="cyJ-KG-ozc"/>
                         <outlet property="itemNote" destination="TJi-3T-My8" id="X2n-co-zYn"/>
                         <outlet property="itemTitle" destination="LIh-2P-JeZ" id="iuO-vJ-Edu"/>
+                        <outlet property="name" destination="wYm-Gs-VGZ" id="Yge-Lj-Nxt"/>
+                        <outlet property="phone" destination="R3Q-st-CIP" id="DQw-Tt-k0L"/>
                         <outlet property="returnSwitch" destination="ajy-va-Fpi" id="BuX-Sh-XtH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30X-jg-h1J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1782.4427480916029" y="1581.6901408450706"/>
+            <point key="canvasLocation" x="-2553" y="2246"/>
         </scene>
         <!--Lost-->
         <scene sceneID="5T6-i9-BOR">
@@ -413,6 +430,48 @@
             </objects>
             <point key="canvasLocation" x="-2553" y="851"/>
         </scene>
+        <!--Found-->
+        <scene sceneID="n6n-jw-2UQ">
+            <objects>
+                <collectionViewController id="Sgr-Jy-6Ce" customClass="FoundCollectionViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="C8I-q6-eJW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NHp-Jk-Hty">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoundCell" id="b0O-uY-afx">
+                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S3M-7J-JtQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Sgr-Jy-6Ce" id="lM8-Ro-tne"/>
+                            <outlet property="delegate" destination="Sgr-Jy-6Ce" id="E5L-Lo-XL8"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Found" id="BLx-Zh-Gs5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hfs-eJ-1jP">
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                            <connections>
+                                <segue destination="hG1-QC-rOj" kind="show" id="9um-Y0-69l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccH-gy-S2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1822" y="851"/>
+        </scene>
         <!--Lost-->
         <scene sceneID="CPx-98-bQK">
             <objects>
@@ -436,43 +495,6 @@
             <point key="canvasLocation" x="-2552" y="123"/>
         </scene>
         <!--Found-->
-        <scene sceneID="GeT-PZ-rvn">
-            <objects>
-                <tableViewController id="oEn-yD-gQK" customClass="FoundTableViewController" customModule="Foundee" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Uwn-2t-WEQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="tD7-Ir-Owv">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="oEn-yD-gQK" id="YMC-Jb-O3o"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoundCell" id="9kJ-bC-1kc">
-                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9kJ-bC-1kc" id="DPL-5x-euP">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="oEn-yD-gQK" id="HWF-c4-m6E"/>
-                            <outlet property="delegate" destination="oEn-yD-gQK" id="j2X-p6-gik"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Found" id="v9y-Ph-Z5h"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I7u-bh-VSI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1822" y="851"/>
-        </scene>
-        <!--Found-->
         <scene sceneID="m7N-FM-6o7">
             <objects>
                 <navigationController id="lla-ZP-6Jq" sceneMemberID="viewController">
@@ -487,7 +509,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="oEn-yD-gQK" kind="relationship" relationship="rootViewController" id="zVw-9j-X97"/>
+                        <segue destination="Sgr-Jy-6Ce" kind="relationship" relationship="rootViewController" id="T0T-QX-XIA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLH-Po-mo4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -503,9 +525,6 @@
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

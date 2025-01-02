@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class NewItemViewController: UIViewController {
+class NewLostItemViewController: UIViewController {
 
     @IBOutlet weak var dateAndTime: UIDatePicker!
     @IBOutlet weak var itemDescriptionTxt: UITextField!
@@ -60,7 +60,7 @@ class NewItemViewController: UIViewController {
     }
 }
 
-extension NewItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension NewLostItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
