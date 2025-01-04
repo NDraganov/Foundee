@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "FoundCell"
 
 class FoundCollectionViewController: UICollectionViewController {
+    
+    private let realm = try! Realm()
+    private var foundItems: Results<FoundItem>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +40,7 @@ class FoundCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return foundItems?.count ?? 1
     }
 
 
