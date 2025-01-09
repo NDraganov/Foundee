@@ -17,5 +17,4 @@ class LostItem: Object {
     @objc dynamic var email: String = ""
     @objc dynamic var image: NSData = NSData()
     @objc dynamic var isReturned: Bool = false
-    
 }

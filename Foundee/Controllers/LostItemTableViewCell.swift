@@ -9,10 +9,15 @@ import UIKit
 
 class LostItemTableViewCell: UITableViewCell {
     
+    @IBOutlet var lostItemLabel: UILabel!
+    @IBOutlet var lostItemNoteLabel: UILabel!
+    @IBOutlet var lostItemNameLabel: UILabel!
+    @IBOutlet var lostItemImageView: UIImageView!
+    
     static let identifier = "LostItemTableViewCell"
-
-    static func nib() -> UINib {
-      return UINib(nibName: "LostItemTableViewCell", bundle: nil)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 
     public func configure(with title: String, itemNote: String, itemName: String, itemImage: UIImage) {
@@ -22,13 +27,8 @@ class LostItemTableViewCell: UITableViewCell {
         lostItemImageView.image = itemImage // The item image
     }
     
-    @IBOutlet var lostItemLabel: UILabel!
-    @IBOutlet var lostItemNoteLabel: UILabel!
-    @IBOutlet var lostItemNameLabel: UILabel!
-    @IBOutlet var lostItemImageView: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    static func nib() -> UINib {
+      return UINib(nibName: "LostItemTableViewCell", bundle: nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

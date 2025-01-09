@@ -10,7 +10,7 @@ import RealmSwift
 
 class FoundItem: Object {
     @objc dynamic var date: Date = Date()
-    @objc dynamic var note: String = ""
+    @objc dynamic var itemTitle: String = ""
     @objc dynamic var foundBy: String = ""
     @objc dynamic var locationFound: String = ""
     @objc dynamic var currentLocation: String = ""

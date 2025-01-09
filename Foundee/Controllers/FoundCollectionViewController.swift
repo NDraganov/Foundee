@@ -17,14 +17,23 @@ class FoundCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.size.width/2)-4, height: (view.frame.size.width/2)-4)
+        collectionView!.collectionViewLayout = layout
+        collectionView.frame = .zero
+        collectionView.frame = view.bounds
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView!.register(FoundItemCollectionViewCell.nib(), forCellWithReuseIdentifier: FoundItemCollectionViewCell.indentifier)
 
-        // Do any additional setup after loading the view.
+    
     }
 
     /*
@@ -39,25 +48,26 @@ class FoundCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return foundItems?.count ?? 1
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return foundItems?.count ?? 6
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoundItemCollectionViewCell.indentifier, for: indexPath) as! FoundItemCollectionViewCell
+        cell.foundItemImageView?.image = UIImage(named: "car")
+        cell.foundItemTitleLabel?.text = "Car"
+        cell.foundItemLocationFoundLabel?.text = "Found in London"
     
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 120, height: 120)
+//        
+//    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
