@@ -284,6 +284,9 @@
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="uploadImagePressed:" destination="hG1-QC-rOj" eventType="touchUpInside" id="U0P-1g-PWw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZXk-sd-cOC"/>
@@ -337,7 +340,21 @@
                             <constraint firstItem="OKB-95-wyE" firstAttribute="top" secondItem="iB9-74-Goz" secondAttribute="bottom" constant="15" id="zoM-P7-PuN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Found Item" id="HTl-Br-Yq6"/>
+                    <navigationItem key="navigationItem" title="New Found Item" id="HTl-Br-Yq6">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="f5W-jT-5yQ">
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                            <connections>
+                                <action selector="addItemPressed:" destination="hG1-QC-rOj" id="tvx-0e-rqi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="currentLocation" destination="FBT-Ji-swp" id="zZj-hH-WH3"/>
+                        <outlet property="dateAndTime" destination="VhR-a3-bLk" id="1CQ-yI-n2h"/>
+                        <outlet property="founderName" destination="aNP-WU-JSD" id="RhU-UF-FGG"/>
+                        <outlet property="itemDescriptionTxt" destination="iB9-74-Goz" id="NvW-N1-NX9"/>
+                        <outlet property="locationFound" destination="XlA-vS-j7L" id="OGY-38-1t5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCM-KJ-mTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
