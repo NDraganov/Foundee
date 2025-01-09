@@ -30,10 +30,14 @@ class FoundCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+        loadFoundItems()
+        
         // Register cell classes
         collectionView!.register(FoundItemCollectionViewCell.nib(), forCellWithReuseIdentifier: FoundItemCollectionViewCell.indentifier)
-
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
 
     /*
@@ -50,16 +54,21 @@ class FoundCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return foundItems?.count ?? 6
+        return foundItems?.count ?? 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoundItemCollectionViewCell.indentifier, for: indexPath) as! FoundItemCollectionViewCell
-        cell.foundItemImageView?.image = UIImage(named: "car")
-        cell.foundItemTitleLabel?.text = "Car"
-        cell.foundItemLocationFoundLabel?.text = "Found in London"
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: FoundItemCollectionViewCell.indentifier, for: indexPath) as! FoundItemCollectionViewCell
     
-        return cell
+        if let foundItem = foundItems?[indexPath.row] {
+            customCell.foundItemImageView.image = UIImage(data: foundItem.image as Data)
+            customCell.foundItemTitleLabel.text = foundItem.itemTitle
+            customCell.foundItemLocationFoundLabel.text = foundItem.locationFound
+        } else {
+            customCell.foundItemTitleLabel.text = "No Found Items"
+        }
+        
+        return customCell
     }
 
     // MARK: UICollectionViewDelegate
@@ -98,4 +107,12 @@ class FoundCollectionViewController: UICollectionViewController {
     }
     */
 
+    
+//MARK: - Model Manupulations Methods
+        
+    func loadFoundItems() {
+        let predicate = NSPredicate(format: "isReturned == false")
+        foundItems = realm.objects(FoundItem.self).sorted(by: \FoundItem.date, ascending: false).filter(predicate)
+        collectionView.reloadData()
+    }
 }
