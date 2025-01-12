@@ -73,10 +73,11 @@ class FoundCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 120, height: 120)
-//        
-//    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FoundDetailsViewController") as! FoundDetailsViewController
+        vc.item = foundItems?[indexPath.item]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
