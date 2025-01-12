@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FoundDetailsViewController: UIViewController {
     @IBOutlet weak var itemImage: UIImageView!
@@ -16,6 +17,7 @@ class FoundDetailsViewController: UIViewController {
     @IBOutlet weak var currentLocation: UILabel!
     @IBOutlet weak var returnSwitch: UISwitch!
     
+    private let realm = try! Realm()
     var item: FoundItem?
     private let dateFormatter = DateFormatter()
 
@@ -40,14 +42,29 @@ class FoundDetailsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func returnSwitchPressed(_ sender: UISwitch) {
+       
+        let alert = UIAlertController(title: "Confirmation", message: "Confirm that this item has been returned", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            sender.isOn = false
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+            if sender.isOn == true {
+                do {
+                    try self.realm.write {
+                        self.item?.isReturned = true
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                } catch {
+                    print("Error changing the return state \(error)")
+                }
+            }
+            
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
-    */
 
 }

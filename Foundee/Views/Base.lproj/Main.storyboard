@@ -606,6 +606,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rNx-h9-4Xt">
                                 <rect key="frame" x="334" y="675" width="51" height="31"/>
+                                <connections>
+                                    <action selector="returnSwitchPressed:" destination="nKU-fL-5pR" eventType="valueChanged" id="6b2-1P-CJL"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EP8-yI-sxT"/>
